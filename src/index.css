@@ -1,0 +1,339 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  border: 0 solid #e5e7eb;
+}
+
+::selection {
+  background-color: #000;
+  color: #fff;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #192335;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar {
+  display: none;
+  width: 8px;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+}
+
+.thumbnail-selector {
+  opacity: 0;
+  display: none;
+  transition: opacity 0.25s ease-in;
+}
+
+.thumbnail-selector.show {
+  opacity: 1;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+:root {
+  --icon-fill: #ffffff;
+  --icon-fill-hover: #ddd;
+  --logo-filter: invert(0);
+}
+
+[data-theme='dark']:root {
+  --icon-fill: #000000;
+  --icon-fill-hover: #121223;
+  --logo-filter: invert(1);
+}
+
+.logo {
+  filter: var(--logo-filter);
+}
+
+.show-smoothly {
+  animation: slideUp 0.5s forwards;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#right-sidebar .tab {
+  overflow: hidden;
+}
+
+#right-sidebar .tab .icon {
+  transform: translateY(10px);
+  transition: transform 0.25s ease-out;
+}
+
+#right-sidebar .tab p {
+  transform: translateY(1.5rem);
+  opacity: 0;
+  transition: all 0.25s ease-out;
+}
+
+#right-sidebar .tab:hover p,
+#right-sidebar .tab.active p {
+  opacity: 1;
+}
+
+#right-sidebar .tab:hover .icon,
+#right-sidebar .tab:hover p,
+#right-sidebar .tab.active .icon,
+#right-sidebar .tab.active p {
+  transform: translateY(0);
+}
+
+.right-sidebarContent {
+  transition:
+    width,
+    opacity 0.25s,
+    0.25s ease-in;
+}
+
+.right-sidebarContent.show {
+  opacity: 1;
+  width: 360px;
+}
+
+.active-tab {
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition:
+    transform 0.2s ease-in-out,
+    -webkit-transform 0.2s ease-in-out;
+}
+
+.canvas-container {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.single-text-editor {
+  @apply max-h-0 overflow-hidden transition-[max-height] duration-1000;
+}
+
+.single-text-editor.show {
+  @apply max-h-[320px];
+}
+
+.moveable-target {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 150px;
+  left: 100px;
+  line-height: 100px;
+  text-align: center;
+  background: #ee8;
+  color: #333;
+  font-weight: bold;
+  border: 1px solid #333;
+  box-sizing: border-box;
+}
+
+.droppable-area.highlight {
+  @apply border-[6px] border-dashed border-blue-400;
+}
+
+@import 'https://unpkg.com/open-props/easings.min.css';
+.sun-and-moon > :is(.moon, .sun, .sun-beams) {
+  transform-origin: center;
+}
+
+.sun-and-moon > :is(.moon, .sun) {
+  fill: var(--icon-fill);
+}
+
+.theme-toggle:is(:hover, :focus-visible) > .sun-and-moon > :is(.moon, .sun) {
+  fill: var(--icon-fill-hover);
+}
+
+.sun-and-moon > .sun-beams {
+  stroke: var(--icon-fill);
+  stroke-width: 2px;
+}
+
+.theme-toggle:is(:hover, :focus-visible) .sun-and-moon > .sun-beams {
+  stroke: var(--icon-fill-hover);
+}
+
+[data-theme='dark'] .sun-and-moon > .sun {
+  transform: scale(1.75);
+}
+
+[data-theme='dark'] .sun-and-moon > .sun-beams {
+  opacity: 0;
+}
+
+[data-theme='dark'] .sun-and-moon > .moon > circle {
+  transform: translateX(-7px);
+}
+
+@supports (cx: 1) {
+  [data-theme='dark'] .sun-and-moon > .moon > circle {
+    cx: 17;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sun-and-moon > .sun {
+    transition: transform 0.5s var(--ease-elastic-3);
+  }
+
+  .sun-and-moon > .sun-beams {
+    transition:
+      transform 0.5s var(--ease-elastic-4),
+      opacity 0.5s var(--ease-3);
+  }
+
+  .sun-and-moon .moon > circle {
+    transition: transform 0.25s var(--ease-out-5);
+  }
+
+  @supports (cx: 1) {
+    .sun-and-moon .moon > circle {
+      transition: cx 0.25s var(--ease-out-5);
+    }
+  }
+
+  [data-theme='dark'] .sun-and-moon > .sun {
+    transition-timing-function: var(--ease-3);
+    transition-duration: 0.25s;
+    transform: scale(1.75);
+  }
+
+  [data-theme='dark'] .sun-and-moon > .sun-beams {
+    transition-duration: 0.15s;
+    transform: rotateZ(-25deg);
+  }
+
+  [data-theme='dark'] .sun-and-moon > .moon > circle {
+    transition-duration: 0.5s;
+    transition-delay: 0.25s;
+  }
+}
+
+@font-face {
+  font-family: 'icomoon';
+  src: url('/src/assets/fonts/icomoon.eot?d0otj3');
+  src:
+    url('/src/assets/fonts/icomoon.eot?d0otj3#iefix') format('embedded-opentype'),
+    url('/src/assets/fonts/icomoon.ttf?d0otj3') format('truetype'),
+    url('/src/assets/fonts/icomoon.woff?d0otj3') format('woff'),
+    url('/src/assets/fonts/icomoon.svg?d0otj3#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^='icon-'],
+[class*=' icon-'] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-cheveron-right:before {
+  content: '\e903';
+}
+.icon-type:before {
+  content: '\e900';
+}
+.icon-typography:before {
+  content: '\e900';
+}
+.icon-text:before {
+  content: '\e900';
+}
+.icon-font:before {
+  content: '\e900';
+}
+.icon-frame:before {
+  content: '\e901';
+}
+.icon-picture:before {
+  content: '\e901';
+}
+.icon-image:before {
+  content: '\e90d';
+}
+.icon-redo2:before {
+  content: '\e968';
+}
+.icon-arrow-up-left2:before {
+  content: '\ea39';
+}
+.icon-arrow-up2:before {
+  content: '\ea3a';
+}
+.icon-arrow-up-right2:before {
+  content: '\ea3b';
+}
+.icon-arrow-right2:before {
+  content: '\ea3c';
+}
+.icon-arrow-down-right2:before {
+  content: '\ea3d';
+}
+.icon-arrow-down2:before {
+  content: '\ea3e';
+}
+.icon-arrow-down-left2:before {
+  content: '\ea3f';
+}
+.icon-arrow-left2:before {
+  content: '\ea40';
+}
+.icon-checkbox-unchecked:before {
+  content: '\ea53';
+}
+.icon-radio-unchecked:before {
+  content: '\ea56';
+}
+.icon-format_color_fill:before {
+  content: '\e902';
+}
