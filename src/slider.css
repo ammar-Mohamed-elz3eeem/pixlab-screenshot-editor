@@ -5,8 +5,8 @@
 }
 
 :root {
-  --shadow: .3rem .3rem .6rem #c8d0e7, -.2rem -.2rem .5rem #FFFFFF;
-  --inner-shadow: inset .2rem .2rem .5rem #c8d0e7, inset -.2rem -.2rem .5rem #FFFFFF;
+  --shadow: 0.3rem 0.3rem 0.6rem #c8d0e7, -0.2rem -0.2rem 0.5rem #ffffff;
+  --inner-shadow: inset 0.2rem 0.2rem 0.5rem #c8d0e7, inset -0.2rem -0.2rem 0.5rem #ffffff;
 }
 
 /* .slider__box {
@@ -53,13 +53,13 @@
   top: -2rem;
   left: -1rem;
   width: 4rem;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1rem;
   color: #6d5dfc;
   opacity: 0;
-  transition: opacity .3s ease;
+  transition: opacity 0.3s ease;
   @apply bg-gray-800 dark:bg-gray-200;
 }

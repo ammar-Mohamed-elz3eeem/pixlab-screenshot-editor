@@ -6,7 +6,7 @@ import { type IBackground, type IColor, type IThumb } from '../types'
 import { type fabric } from 'fabric'
 
 export interface AppContextDefaults {
-  overLay:string | undefined
+  overLay: string | undefined
   selectedTab: string | undefined
   selectedMode: string | undefined
   selectedThumbType: IThumb | null
@@ -18,7 +18,7 @@ export interface AppContextDefaults {
   texts: fabric.IText[]
   shapes: fabric.Object[]
   image: string | null
-  setOverLay:Dispatch<SetStateAction<string | undefined>>
+  setOverLay: Dispatch<SetStateAction<string | undefined>>
   setSelectedTab: Dispatch<SetStateAction<string | undefined>>
   setSelectedMode: Dispatch<SetStateAction<string>>
   setSelectedThumbType: Dispatch<SetStateAction<IThumb | null>>
@@ -45,7 +45,7 @@ const defaultContextValue: AppContextDefaults = {
   texts: [],
   shapes: [],
   image: null,
-  setOverLay:()=>{},
+  setOverLay: () => {},
   setSelectedTab: () => {},
   setSelectedMode: () => {},
   setSelectedThumbType: () => {},
@@ -80,7 +80,7 @@ export default function AppContext({ children, value }: AppContextProps) {
   const [shapes, setShapes] = useState<fabric.Object[]>(Array<fabric.Object>)
   const [gradientDirection, setGradientDirection] = useState('to left bottom')
   const [image, setImage] = useState<string | null>(null)
-  const [overLay,setOverLay]=useState<string | undefined>(undefined)
+  const [overLay, setOverLay] = useState<string | undefined>(undefined)
   return (
     <appContext.Provider
       value={{
@@ -107,7 +107,7 @@ export default function AppContext({ children, value }: AppContextProps) {
         shapes,
         setShapes,
         overLay,
-        setOverLay
+        setOverLay,
       }}
     >
       {children}

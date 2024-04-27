@@ -4,7 +4,7 @@ import AppContext from './context/appContext'
 import FabricProvider from './context/fabricContext'
 import useApp from './hooks/useContext'
 
-const LazyHome = lazy(async () => await import("./Home"));
+const LazyHome = lazy(async () => await import('./Home'))
 
 export default function App(): JSX.Element {
   const ctx = useApp()
