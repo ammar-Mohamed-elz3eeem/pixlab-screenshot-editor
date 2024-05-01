@@ -30,10 +30,8 @@ function Home(): JSX.Element {
             <Editor />
           </main>
 
-          <OverlayLeft />
           <LeftSidebar />
           <div className='md:flex flex-col items-center justify-center md:items-start md:justify-start md:flex-grow-0 md:flex-basis-1/3 md:mt-[65px] md:fixed md:top-0 md:right-0 md:h-screen z-30'>
-            <OverlayRight />
             <RightSidebar />
           </div>
         </Layout>
