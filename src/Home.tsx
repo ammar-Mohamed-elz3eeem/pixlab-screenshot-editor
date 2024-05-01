@@ -6,17 +6,8 @@ import Navbar from './components/Navbar'
 import Thumbnails from './components/Thumbnails'
 import LeftSidebar from './components/LeftSidebar'
 import RightSidebar from './components/RightSidebar'
-import OverlayRight from './components/OverlayRight'
-import OverlayLeft from './components/OverlayLeft'
-// import useFabric from './hooks/useFabric';
-// import { fabric } from 'fabric';
-// import { useEffect } from 'react'
-// import useApp from './hooks/useContext'
 
 function Home(): JSX.Element {
-  // const { setFabContext } = useFabric();
-  // const { selectedThumbType } = useApp();
-
   return (
     <>
       <div className='dark:bg-slate-950 no-scrollbar bg-slate-50 transition-colors'>
