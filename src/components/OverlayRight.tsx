@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { type ReactElement } from 'react'
 import useApp from '../hooks/useContext'
-const OverlayRight = () => {
-  const { overLay, setOverLay } = useApp()
+const OverlayRight = (): ReactElement => {
+  const { overLay } = useApp()
+
   return (
     <div
       style={{
@@ -9,11 +10,11 @@ const OverlayRight = () => {
         left: '0',
         height: '100%',
         width: '100%',
-        backgroundColor: 'black',
         zIndex: '3',
         opacity: '0.7',
         display: overLay,
       }}
+      className='dark:bg-[#e5e5d4] bg-[black]'
     ></div>
   )
 }
