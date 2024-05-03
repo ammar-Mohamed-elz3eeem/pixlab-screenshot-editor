@@ -55,22 +55,26 @@ const WelcomePage = (): ReactElement => {
           paddingLeft: '3rem',
         }}
       >
-        <div style={{width:'100%'}}>
+        <div style={{width:'100%',
+                     display:'flex',
+                     flexDirection:'column',
+                     gap:'0.5rem'
+        }}>
+        <Logo />
              <div style={{height:'5px',
              marginBottom:'0.5rem',
                       width:'100%',
              backgroundImage:'linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #ff4e50 50%, #ff4e50 62.5%, #8e9eab 62.5%, #8e9eab 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4)',
                      borderTop: '0',
                     borderRadius:'5px',}}/>
-        <Logo />
+
         </div>
 
         <div style={{display:'flex',
                      flexDirection:'column',
-                     gap:'4rem',
+                     gap:'2rem',
                      justifyContent:'center',
                      alignItems:'start',
-                    //  height:'75%',
         }}>
         <h4 style={{ fontSize: '20px',
           lineHeight:'30px',
@@ -98,7 +102,7 @@ const WelcomePage = (): ReactElement => {
               color: 'white',
               backgroundColor: '#4596fdfc',
               fontSize: '27px',
-              lineHeight:'15px',
+              lineHeight:'20px',
             }}
           >
             Load Images
