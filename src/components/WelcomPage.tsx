@@ -12,7 +12,6 @@ const WelcomePage = (): ReactElement => {
   const { setOverLay } = useApp()
   const {
     canvas: { fabImage },
-    canvas: { fabImage },
   } = useFabric()
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
@@ -133,5 +132,4 @@ const WelcomePage = (): ReactElement => {
   )
 }
 
-export default WelcomePage
 export default WelcomePage
