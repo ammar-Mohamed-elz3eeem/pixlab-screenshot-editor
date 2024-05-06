@@ -86,7 +86,10 @@ const WelcomePage = (): ReactElement => {
             alignItems: 'start',
           }}
         >
-          <h4 style={{ fontSize: '20px', lineHeight: '30px' }}>
+          <h4
+            className='dark:text-black text-white'
+            style={{ fontSize: '20px', lineHeight: '30px' }}
+          >
             Welcome to our revolutionary AI Image Editor, where creativity meets technology to
             transform your images like never before. Say goodbye to tedious manual editing and hello
             to effortless, professional-quality results at your fingertips. Ready to take your
