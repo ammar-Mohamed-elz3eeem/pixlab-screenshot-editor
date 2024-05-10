@@ -1,6 +1,8 @@
 import React, { type ReactElement, useCallback } from 'react'
+
 import { useDropzone } from 'react-dropzone'
 import useFabricImage from '../hooks/useFabricImage'
+
 import useApp from '../hooks/useContext'
 import useFabric from '../hooks/useFabric'
 import modern from '../assets/img/modern artificial intelligence medical scene_4614988.png'
@@ -16,10 +18,16 @@ const WelcomePage = (): ReactElement => {
     acceptedFiles.forEach((file: File) => {
       fabricImageInit(file)
       setOverLay('none')
+      fabricImageInit(file)
+      setOverLay('none')
     })
   }, [])
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop })
+
+  if (fabImage) {
+    return <></>
+  }
 
   if (fabImage) {
     return <></>
