@@ -67,7 +67,9 @@ export default function Slider({ max, min, label, current, onChange }: SliderPro
   return (
     <div className='flex flex-row justify-between items-center gap-4 px-4'>
       <div>
-        <div className='text-sm font-semibold text-black dark:text-white flex items-center whitespace-nowrap'>
+        <div className='text-sm font-semibold 
+        text-white dark:text-black
+         flex items-center whitespace-nowrap'>
           {label}
           <div className='px-[5px] text-[0.7rem] dark:bg-gray-50 rounded-md bg-gray-900 text-gray-400/70 dark:text-gray-600/80 font-normal border dark:border-gray-300 border-gray-800 font-code leading-normal flex items-center justify-center duration-100 cursor-default ml-2'>
             <span className='font-mono'>{value}</span>

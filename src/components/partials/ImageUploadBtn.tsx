@@ -9,7 +9,7 @@ function ImageUploadBtn(): JSX.Element {
     <div className=' flex gap-4 mt-2'>
       <label
         htmlFor='fileInput'
-        className='cursor-pointer  p-2 border border-slate-800 shadow-xl text-[12px] px-14 rounded-md flex items-center justify-center text-white '
+        className='cursor-pointer  p-2 border border-slate-800 shadow-xl text-[12px] px-14 rounded-md flex items-center justify-center text-white dark:text-black dark:border-blue-800 '
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'
