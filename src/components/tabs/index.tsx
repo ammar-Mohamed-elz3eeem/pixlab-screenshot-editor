@@ -102,12 +102,24 @@ export default function Tabs({
         <span className='icon icon-radio-unchecked text-[1rem] w-4 hw-4'></span>
         <p>Shapes</p>
       </div>
+      <div
+        data-tooltip-id='free-draw-tooltip'
+        data-mode='free-draw'
+        onClick={setTab}
+        className={`tab min-h-[50px] text-xs flex flex-col items-center text-center justify-center cursor-pointer ${
+          selectedTab === 'free-draw' && 'active'
+        }`}
+      >
+        <span className='icon icon-brush text-[1rem] w-4 hw-4'></span>
+        <p>Draw</p>
+      </div>
       <Tooltip id='gradient-tooltip' content='Set Box Gradient' />
       <Tooltip id='solid-tooltip' content='Set Box Color' />
       <Tooltip id='image-tooltip' content='Set Box Image' />
       <Tooltip id='frame-tooltip' content='Set Box Frame' />
       <Tooltip id='text-tooltip' content='Add Textbox to your thumbnail' />
       <Tooltip id='shape-tooltip' content='Add Shape to your thumbnail' />
+      <Tooltip id='free-draw-tooltip' content='Free Draw with brushes, pattern & more' />
     </>
   )
 }

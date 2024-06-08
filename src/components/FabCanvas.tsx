@@ -4,7 +4,7 @@ import useFabric from '../hooks/useFabric'
 import { fabric } from 'fabric'
 
 function FabCanvas(): ReactElement {
-  const { selectedThumbType, texts } = useApp()
+  const { selectedThumbType, texts, selectedTab, setSelectedTab } = useApp()
   const {
     canvas: { fabImage, setFabContext, fabContext },
   } = useFabric()
@@ -27,6 +27,16 @@ function FabCanvas(): ReactElement {
       }),
     )
   }, [])
+
+  useEffect(() => {
+    if (fabContext) {
+      if (selectedTab !== 'free-draw') {
+        fabContext.isDrawingMode = false
+      } else {
+        fabContext.isDrawingMode = true
+      }
+    }
+  }, [selectedTab, setSelectedTab])
 
   useEffect(() => {
     texts.forEach((text) => {

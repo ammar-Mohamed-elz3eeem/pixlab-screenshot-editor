@@ -1,6 +1,7 @@
 import { type ITap } from '../types'
 import { Gradient, Image, Solid, Frame, Text } from '../components/tabs'
 import Shape from '../components/tabs/Shape'
+import FreeDraw from '../components/tabs/freeDraw'
 
 export const modes = [
   {
@@ -462,4 +463,5 @@ export const tabs: ITap = {
   frame: <Frame />,
   text: <Text />,
   shape: <Shape />,
+  'free-draw': <FreeDraw />,
 }
