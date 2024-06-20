@@ -16,10 +16,10 @@ interface Props {
 
 export function withFrame(WrappedComponent: ComponentType<{}>, frame: string): FC<Props> {
   const WithFrame: FC = () => {
-    console.log('frame', frame)
+    // console.log('frame', frame)
     switch (frame) {
       case 'mac':
-        console.log('ON MAC FRAME')
+        // console.log('ON MAC FRAME')
         return (
           <MacFrame>
             <WrappedComponent />
@@ -62,7 +62,7 @@ export function withFrame(WrappedComponent: ComponentType<{}>, frame: string): F
           </FancyFrame>
         )
       default:
-        console.log('HEREEEEEEEEEEEEEEEEEE')
+        // console.log('HEREEEEEEEEEEEEEEEEEE')
         return <WrappedComponent />
     }
   }

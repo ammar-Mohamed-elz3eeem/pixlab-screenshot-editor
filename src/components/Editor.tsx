@@ -2,14 +2,13 @@
 /* eslint-disable no-undef */
 
 import useApp from '../hooks/useContext'
-import MyDropzone from './partials/MyDropzone'
 import useFabric from '../hooks/useFabric'
 import { withFrame } from './FrameHOC'
 import EditorNode from './EditorNode'
 import FabCanvas from './FabCanvas'
 
 export default function Editor(): JSX.Element {
-  const { selectedThumbType, setSelectedThumbType, selectedFrame, image } = useApp()
+  const { selectedThumbType, setSelectedThumbType, selectedFrame } = useApp()
   const {
     canvas: { fabContext },
   } = useFabric()
@@ -38,7 +37,6 @@ export default function Editor(): JSX.Element {
           </EditorWithFrame>
         </div>
         <FabCanvas></FabCanvas>
-        {!image && <MyDropzone />}
       </div>
       <div className='px-5 flex flex-row justify-center items-center fixed bottom-0 left-1/2 z-20 text-white dark:text-black -translate-x-1/2 border-t rounded-t-xl gap-4 border-slate-800 dark:border-slate-200 bg-[#191922] dark:bg-[#e1e1d5]'>
         <button

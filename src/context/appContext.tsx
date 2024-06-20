@@ -18,6 +18,7 @@ export interface AppContextDefaults {
   texts: fabric.IText[]
   shapes: fabric.Object[]
   image: string | null
+  tool: 'POLYGON' | 'ERASER' | 'SELECT'
   setOverLay: Dispatch<SetStateAction<string | undefined>>
   setSelectedTab: Dispatch<SetStateAction<string | undefined>>
   setSelectedMode: Dispatch<SetStateAction<string>>
@@ -30,6 +31,7 @@ export interface AppContextDefaults {
   setShapes: Dispatch<SetStateAction<fabric.Object[]>>
   setTexts: Dispatch<SetStateAction<fabric.IText[]>>
   setImage: Dispatch<SetStateAction<string | null>>
+  setTool: Dispatch<SetStateAction<'POLYGON' | 'ERASER' | 'SELECT'>>
 }
 
 const defaultContextValue: AppContextDefaults = {
@@ -45,6 +47,7 @@ const defaultContextValue: AppContextDefaults = {
   texts: [],
   shapes: [],
   image: null,
+  tool: 'SELECT',
   setOverLay: () => {},
   setSelectedTab: () => {},
   setSelectedMode: () => {},
@@ -57,6 +60,7 @@ const defaultContextValue: AppContextDefaults = {
   setTexts: () => {},
   setImage: () => {},
   setShapes: () => {},
+  setTool: () => {},
 }
 
 export const appContext = createContext<AppContextDefaults>(defaultContextValue)
@@ -81,6 +85,8 @@ export default function AppContext({ children, value }: AppContextProps) {
   const [gradientDirection, setGradientDirection] = useState('to left bottom')
   const [image, setImage] = useState<string | null>(null)
   const [overLay, setOverLay] = useState<string | undefined>(undefined)
+  const [tool, setTool] = useState<'POLYGON' | 'ERASER' | 'SELECT'>('SELECT')
+
   return (
     <appContext.Provider
       value={{
@@ -108,6 +114,8 @@ export default function AppContext({ children, value }: AppContextProps) {
         setShapes,
         overLay,
         setOverLay,
+        tool,
+        setTool,
       }}
     >
       {children}

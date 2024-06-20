@@ -32,7 +32,7 @@ export default function SinglePalletColor({ color, index }: SinglePalletColorPro
     e.stopPropagation()
     e.preventDefault()
     setShowColorPicker((current) => {
-      console.log('Inside state changer')
+      // console.log('Inside state changer')
       return !current
     })
   }

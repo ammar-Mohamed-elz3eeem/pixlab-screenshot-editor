@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-undef */
 import { type SyntheticEvent, useRef } from 'react'
 import GradientIcon from '../partials/GradientIcon'
@@ -8,13 +10,20 @@ import Image from './Image'
 import Frame from './Frame'
 import Text from './Text'
 import { Tooltip } from 'react-tooltip'
+import useFabric from '../../hooks/useFabric'
+import usePolygon from '../../hooks/usePolygon'
 
 export default function Tabs({
   onTabClick,
 }: {
   onTabClick: (t: string | undefined) => void
 }): JSX.Element {
-  const { selectedTab, setSelectedTab, selectedMode } = useApp()
+  const { selectedTab, setSelectedTab, selectedMode, setTool } = useApp()
+  const [_, setDrawMode] = usePolygon()
+
+  const {
+    canvas: { fabContext },
+  } = useFabric()
 
   const activeTabRef = useRef<HTMLDivElement>(null)
 
@@ -113,6 +122,21 @@ export default function Tabs({
         <span className='icon icon-brush text-[1rem] w-4 hw-4'></span>
         <p>Draw</p>
       </div>
+      <div
+        data-tooltip-id='polygon-tooltip'
+        data-mode='polygon'
+        onClick={(e) => {
+          setTab(e)
+          setTool('POLYGON')
+          if (fabContext) setDrawMode((isDraw) => !isDraw)
+        }}
+        className={`tab min-h-[50px] text-xs flex flex-col items-center text-center justify-center cursor-pointer ${
+          selectedTab === 'polygon' && 'active'
+        }`}
+      >
+        <span className='icon icon-brush text-[1rem] w-4 hw-4'></span>
+        <p>Polygon</p>
+      </div>
       <Tooltip id='gradient-tooltip' content='Set Box Gradient' />
       <Tooltip id='solid-tooltip' content='Set Box Color' />
       <Tooltip id='image-tooltip' content='Set Box Image' />
@@ -120,6 +144,7 @@ export default function Tabs({
       <Tooltip id='text-tooltip' content='Add Textbox to your thumbnail' />
       <Tooltip id='shape-tooltip' content='Add Shape to your thumbnail' />
       <Tooltip id='free-draw-tooltip' content='Free Draw with brushes, pattern & more' />
+      <Tooltip id='polygon-tooltip' content='Free Draw with brushes, pattern & more' />
     </>
   )
 }

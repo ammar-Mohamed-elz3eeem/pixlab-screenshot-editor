@@ -20,6 +20,16 @@ export interface FabricContext {
   setSelectedObjects: Dispatch<SetStateAction<fabric.Object[] | undefined>>
   canvasRadius: number
   setCanvasRadius: Dispatch<SetStateAction<number>>
+  pointArray: CustomFabricCircle[] | undefined
+  setPointArray: Dispatch<SetStateAction<CustomFabricCircle[] | undefined>>
+  lineArray: CustomFabricLine[] | undefined
+  setLineArray: Dispatch<SetStateAction<CustomFabricLine[] | undefined>>
+  activeLine: CustomFabricLine | null
+  setActiveLine: Dispatch<SetStateAction<CustomFabricLine | null>>
+  activeShape: fabric.Polygon | null
+  setActiveShape: Dispatch<SetStateAction<fabric.Polygon | null>>
+  drawMode: boolean
+  setDrawMode: Dispatch<SetStateAction<boolean>>
 }
 
 const defaultValues: FabricContext = {
@@ -31,6 +41,28 @@ const defaultValues: FabricContext = {
   setSelectedObjects: () => {},
   canvasRadius: 0,
   setCanvasRadius: () => {},
+  pointArray: [],
+  setPointArray: () => {},
+  lineArray: [],
+  setLineArray: () => {},
+  activeLine: null,
+  setActiveLine: () => {},
+  activeShape: null,
+  setActiveShape: () => {},
+  drawMode: false,
+  setDrawMode: () => {},
+}
+
+export interface CustomFabricLine extends fabric.Line {
+  class: string
+}
+
+export interface CustomFabricCircle extends fabric.Circle {
+  id: string
+}
+
+export interface CustomFabricPolygon extends fabric.Polygon {
+  id: string
 }
 
 export const fabricContext = createContext<FabricContext>(defaultValues)
@@ -40,6 +72,11 @@ export default function FabricProvider({ children }: { children: ReactNode }): J
   const [fabImage, setFabImage] = useState<fabric.Image>()
   const [selectedObjects, setSelectedObjects] = useState<fabric.Object[]>()
   const [canvasRadius, setCanvasRadius] = useState<number>(0)
+  const [pointArray, setPointArray] = useState<CustomFabricCircle[] | undefined>()
+  const [lineArray, setLineArray] = useState<CustomFabricLine[] | undefined>()
+  const [activeLine, setActiveLine] = useState<CustomFabricLine | null>(null)
+  const [activeShape, setActiveShape] = useState<fabric.Polygon | null>(null)
+  const [drawMode, setDrawMode] = useState<boolean>(false)
 
   const { selectedThumbType } = useApp()
 
@@ -59,6 +96,16 @@ export default function FabricProvider({ children }: { children: ReactNode }): J
         setSelectedObjects,
         canvasRadius,
         setCanvasRadius,
+        pointArray,
+        setPointArray,
+        lineArray,
+        setLineArray,
+        activeLine,
+        setActiveLine,
+        activeShape,
+        setActiveShape,
+        drawMode,
+        setDrawMode,
       }}
     >
       {children}

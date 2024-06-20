@@ -33,7 +33,7 @@ export default function Slider({ max, min, label, current, onChange }: SliderPro
     }
     setValue((prevVal) => {
       const newValue = parseInt(((x / targetRect?.width!) * (max! - min!) + min!).toFixed(0))
-      console.log(newValue)
+      // console.log(newValue)
       onChange(newValue)
       return newValue
     })
@@ -65,7 +65,7 @@ export default function Slider({ max, min, label, current, onChange }: SliderPro
   }
 
   return (
-    <div className='flex flex-row justify-between items-center gap-4 px-4'>
+    <div className='flex flex-row justify-between items-center'>
       <div>
         <div className='text-sm font-semibold dark:text-black text-white flex items-center whitespace-nowrap'>
           {label}

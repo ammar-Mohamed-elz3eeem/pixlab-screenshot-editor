@@ -12,11 +12,11 @@ export default function LeftSidebar(): JSX.Element {
   const handleTabClicked = (mode: string | undefined): void => {
     setCurrentTab((prev: string | undefined) => {
       if (prev === mode) {
-        console.log('mode == prev', mode, prev)
+        // console.log('mode == prev', mode, prev)
         refSidebarContent.current?.classList.toggle('show')
         refShowSidebar.current = !refShowSidebar.current
       } else {
-        console.log('mode != prev', mode, prev)
+        // console.log('mode != prev', mode, prev)
         refSidebarContent.current?.classList.add('show')
         refShowSidebar.current = true
       }
