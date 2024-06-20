@@ -1,9 +1,29 @@
 /* eslint-disable no-undef */
-import React from 'react'
+import React, { useCallback } from 'react'
 import useApp from '../../hooks/useContext'
+import useFabricImage from '../../hooks/useFabricImage'
+import { useDropzone } from 'react-dropzone'
 
 function ImageUploadBtn(): JSX.Element {
   const { image } = useApp()
+  const fabricImageInit = useFabricImage()
+  const { setOverLay } = useApp()
+
+  const onDrop = useCallback((acceptedFiles: File[]) => {
+    acceptedFiles.forEach((file: File) => {
+      console.log(file)
+      fabricImageInit(file)
+      setOverLay('none')
+    })
+  }, [])
+
+  const { getInputProps } = useDropzone({
+    onDrop,
+    maxFiles: 1,
+    accept: {
+      'image/*': ['.jpeg', '.png', '.jpg'],
+    },
+  })
 
   return (
     <div className=' flex gap-4 mt-2'>
@@ -38,7 +58,7 @@ function ImageUploadBtn(): JSX.Element {
           )}
         </div>
       </div>
-      <input type='file' className='hidden' id='fileInput' />
+      <input type='file' className='hidden' id='fileInput' {...getInputProps()} />
     </div>
   )
 }

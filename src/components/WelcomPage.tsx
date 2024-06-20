@@ -16,14 +16,19 @@ const WelcomePage = (): ReactElement => {
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     acceptedFiles.forEach((file: File) => {
-      fabricImageInit(file)
-      setOverLay('none')
+      console.log(file)
       fabricImageInit(file)
       setOverLay('none')
     })
   }, [])
 
-  const { getRootProps, getInputProps } = useDropzone({ onDrop })
+  const { getInputProps } = useDropzone({
+    onDrop,
+    maxFiles: 1,
+    accept: {
+      'image/*': ['.jpeg', '.png', '.jpg'],
+    },
+  })
 
   if (fabImage) {
     return <></>
@@ -104,11 +109,9 @@ const WelcomePage = (): ReactElement => {
               borderRadius: '40px',
               textAlign: 'center',
             }}
-            {...getRootProps()}
           >
             <label
               htmlFor='upload-input'
-              id='upload-label'
               style={{
                 color: 'white',
                 backgroundColor: '#4596fdfc',
