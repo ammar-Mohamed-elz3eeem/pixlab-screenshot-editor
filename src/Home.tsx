@@ -6,19 +6,24 @@ import Navbar from './components/Navbar'
 import Thumbnails from './components/Thumbnails'
 import LeftSidebar from './components/LeftSidebar'
 import RightSidebar from './components/RightSidebar'
+import { useRef } from 'react'
+import useCaptureCanvas from './hooks/useCaptureCanvas'
 
 function Home(): JSX.Element {
+  const canvasContainerRef = useRef<HTMLDivElement>(null);
+  const { captureToImage } = useCaptureCanvas(canvasContainerRef);
+
   return (
     <>
       <div className='dark:bg-slate-950 no-scrollbar bg-slate-50 transition-colors'>
-        <Navbar />
+        <Navbar captureToImage={captureToImage} />
         <Layout>
           <main
             style={{ overflow: 'hidden' }}
             className='sticky top-0 z-10 md:z-0 md:relative md: bg-slate-950 dark:bg-slate-50 md:bg-transparent'
           >
             <WelcomPage />
-            <Editor />
+            <Editor containerRef={canvasContainerRef} />
           </main>
 
           <LeftSidebar />

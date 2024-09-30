@@ -7,8 +7,9 @@ import { withFrame } from './FrameHOC'
 import FabCanvas from './FabCanvas'
 import EditorNode from './EditorNode'
 import useImageBorder from '../hooks/useImageBorder'
+import { type Ref } from 'react'
 
-export default function Editor(): JSX.Element {
+export default function Editor({ containerRef }: {containerRef: Ref<HTMLDivElement>}): JSX.Element {
   const { selectedThumbType, setSelectedThumbType, selectedFrame } = useApp()
   const {
     canvas: { fabContext, fabImage },
@@ -33,6 +34,7 @@ export default function Editor(): JSX.Element {
     <div className='editor-container flex items-center h-[200px] md:h-screen md:min-h-screen max-h-screen justify-center md:flex-grow-0 md:flex-basis-2/3 mx-5  flex-col md:justify-center'>
       <div
         className='origin-[50%_center] mt-3 my-editor'
+        ref={containerRef}
         style={{
           transform: `scale(${selectedThumbType?.scale})`,
         }}

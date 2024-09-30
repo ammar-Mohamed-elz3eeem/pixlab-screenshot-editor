@@ -6,14 +6,14 @@ import ThumbnailChooser from './partials/ThumbnailChooser'
 import DarkMode from './partials/DarkMode'
 import ThumbnailChooserMD from './partials/ThumbnailChooserMD'
 
-function Navbar(): JSX.Element {
+function Navbar({ captureToImage }: { captureToImage: () => void }): JSX.Element {
   return (
     <nav className='bg-[#191922] dark:bg-[#e1e1d5] border-b border-b-gray-800 dark:border-b-gray-200 sticky top-0 z-50 transition-colors'>
       <div className='mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='relative flex h-16 items-center justify-between'>
           <Logo />
           <div className='flex items-center gap-0 md:gap-3'>
-            <DownloadImageBtn />
+            <DownloadImageBtn captureToImage={captureToImage} />
             <Copy />
             <label className=' cursor-pointer p-2 bg-white border border-gray-800 dark:border-gray-200 shadow-xl mr-3 text-[12px] px-2 rounded-md flex items-center justify-center md:hidden text-black '>
               <svg

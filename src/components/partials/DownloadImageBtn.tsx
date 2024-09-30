@@ -1,7 +1,10 @@
 /* eslint-disable no-undef */
-function DownloadImageBtn(): JSX.Element {
+function DownloadImageBtn({ captureToImage }: { captureToImage: () => void }): JSX.Element {
   return (
-    <button className='md:inline-flex h-10 animate-shimmer items-center md:mr-3 hidden justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,95%,#000103)] dark:bg-[linear-gradient(110deg,#fefcfe,45%,#e1d9ce,95%,#fefcfe)] bg-[length:200%_100%] px-6 font-medium text-xs text-white dark:text-black shadow-xl transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50'>
+    <button
+      className='md:inline-flex h-10 animate-shimmer items-center md:mr-3 hidden justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,95%,#000103)] dark:bg-[linear-gradient(110deg,#fefcfe,45%,#e1d9ce,95%,#fefcfe)] bg-[length:200%_100%] px-6 font-medium text-xs text-white dark:text-black shadow-xl transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50'
+      onClick={captureToImage}
+    >
       Download Image
       <svg
         xmlns='http://www.w3.org/2000/svg'
