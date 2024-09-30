@@ -153,7 +153,7 @@ function Shape(): JSX.Element {
             <svg className='stroke-white dark:stroke-black' viewBox='0 0 100 100'>
               <polygon
                 points='26,86 11.2,40.4 50,12.2 88.8,40.4 74,86 '
-                stroke='#000'
+                stroke='#fff'
                 stroke-width='8'
                 fill='none'
               ></polygon>
@@ -169,7 +169,7 @@ function Shape(): JSX.Element {
               <path
                 d='M 26,85 50,45 74,85 Z m -26,15 50,-85 50,85 z'
                 stroke-width='8'
-                stroke='#000'
+                stroke='#fff'
                 fill='none'
               ></path>
             </svg>
@@ -186,7 +186,7 @@ function Shape(): JSX.Element {
               <path
                 d='M 62.68234,131.5107 H 26.75771 V 96.075507 Z M 11.572401,146.76255 V 59.66782 l 87.983665,87.09473 z'
                 stroke-width='8'
-                stroke='#000'
+                stroke='#fff'
                 fill='none'
                 fill-rule='evenodd'
               ></path>
@@ -202,7 +202,7 @@ function Shape(): JSX.Element {
           >
             <svg className='stroke-white dark:stroke-black' x='0px' y='0px' viewBox='0 0 96 120'>
               <path
-                stroke='#000'
+                stroke='#fff'
                 stroke-width='8'
                 fill='none'
                 d='M9.113,65.022C11.683,45.575,28.302,30.978,48,30.978c19.696,0,36.316,14.598,38.887,34.045H9.113z'
@@ -219,7 +219,7 @@ function Shape(): JSX.Element {
           >
             <svg className='stroke-white dark:stroke-black' viewBox='-7 -35 133 105'>
               <path
-                stroke='#000000'
+                stroke='#ffffff'
                 stroke-width='8'
                 d='m0 57.952755l0 0c0 -32.006424 25.946333 -57.952755 57.952755 -57.952755c32.006428 0 57.952755 25.946333 57.952755 57.952755l-28.97638 0c0 -16.003212 -12.97316 -28.976377 -28.976376 -28.976377c-16.003212 0 -28.976377 12.9731655 -28.976377 28.976377z'
                 fill='none'

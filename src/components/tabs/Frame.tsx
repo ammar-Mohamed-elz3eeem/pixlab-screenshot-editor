@@ -1,5 +1,4 @@
 /* eslint-disable no-undef */
-import { Fragment } from 'react/jsx-runtime'
 import useApp from '../../hooks/useContext'
 import { frames } from '../../utils/data'
 import { withFrame } from '../FrameHOC'
@@ -44,7 +43,7 @@ export default function Frame(): JSX.Element {
         }}
       >
         {frames.map((frame, index) => {
-          const Frame = withFrame(Fragment, frame)
+          const Frame = withFrame(frame)
           return (
             <div
               className='cursor-pointer frame-border'
@@ -54,7 +53,6 @@ export default function Frame(): JSX.Element {
               }}
             >
               <Frame>
-                <></>
               </Frame>
               <h1 className='text-xs text-center mt-2'>{frame}</h1>
             </div>

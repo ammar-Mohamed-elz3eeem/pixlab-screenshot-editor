@@ -1,11 +1,16 @@
 /* eslint-disable no-undef */
-import { type ReactNode } from 'react'
 
-export default function WindowsDarkFrame({ children }: { children?: ReactNode }): JSX.Element {
+import { type IFrameBorder } from "../../types";
+
+export default function WindowsDarkFrame({ style }: { style: IFrameBorder | null }): JSX.Element {
   return (
     <div
       key={'windows-dark'}
-      className='relative bg-gray-800 border border-gray-600 rounded-lg overflow-hidden shadow-md'
+      style={style ?? {}}
+      className={
+        'border-frame absolute bg-gray-800 border border-gray-600 rounded-lg overflow-hidden shadow-md' +
+        (style ? ' absolute' : ' relative')
+      }
     >
       <div className='flex items-center justify-between bg-gray-700 border-b border-gray-600 px-3 py-1'>
         <div className='text-gray-300 text-sm font-medium'></div>
@@ -61,7 +66,7 @@ export default function WindowsDarkFrame({ children }: { children?: ReactNode })
           </button>
         </div>
       </div>
-      <div className='p-4 frame-content'>{children}</div>
+      <div className='p-4 frame-content'></div>
     </div>
   )
 }

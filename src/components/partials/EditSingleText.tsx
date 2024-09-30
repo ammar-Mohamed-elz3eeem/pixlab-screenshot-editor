@@ -33,7 +33,7 @@ function EditSingleText({
               {editText?.text}
             </textarea>
           </div>
-          <div className='mb-4 flex flex-row'>
+          <div className='mb-4 flex flex-row gap-2'>
             <div className=''>
               <label htmlFor='fontSize'>Font Size</label>
               <input
@@ -64,16 +64,16 @@ function EditSingleText({
               </select>
             </div>
           </div>
-          <div className='flex flex-row flex-nowrap gap-4 justify-between'>
+          <div className='flex flex-col flex-nowrap gap-4 justify-between'>
             <button
-              className='w-full rounded-md py-3 px-8 bg-white dark:bg-black text-black dark:text-white'
+              className='w-full rounded-md py-3 px-8 dark:text-gray-900 dark:bg-gray-50 text-white bg-gray-700'
               type='button'
               onClick={onUpdate}
             >
               Edit Text
             </button>
             <button
-              className='w-full rounded-md py-3 px-8 text-red-500 bg-white dark:bg-black'
+              className='w-full rounded-md py-3 px-8 text-red-500 dark:text-gray-900 dark:bg-gray-50 text-white bg-gray-700'
               type='button'
               onClick={() => {
                 onDelete()

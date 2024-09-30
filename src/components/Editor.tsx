@@ -4,13 +4,14 @@
 import useApp from '../hooks/useContext'
 import useFabric from '../hooks/useFabric'
 import { withFrame } from './FrameHOC'
-import EditorNode from './EditorNode'
 import FabCanvas from './FabCanvas'
+import EditorNode from './EditorNode'
+import useImageBorder from '../hooks/useImageBorder'
 
 export default function Editor(): JSX.Element {
   const { selectedThumbType, setSelectedThumbType, selectedFrame } = useApp()
   const {
-    canvas: { fabContext },
+    canvas: { fabContext, fabImage },
   } = useFabric()
 
   const handleZooming = (value: number): void => {
@@ -21,7 +22,12 @@ export default function Editor(): JSX.Element {
     fabContext?.setZoom(fabContext?.getZoom() + value)
   }
 
-  const EditorWithFrame = withFrame(EditorNode, selectedFrame)
+  const { borderStyle } = useImageBorder(
+    fabImage as fabric.Image | null,
+    fabContext as fabric.Canvas | null,
+  )
+
+  const EditorWithFrame = withFrame(selectedFrame, { borderStyle });
 
   return (
     <div className='editor-container flex items-center h-[200px] md:h-screen md:min-h-screen max-h-screen justify-center md:flex-grow-0 md:flex-basis-2/3 mx-5  flex-col md:justify-center'>
@@ -32,9 +38,8 @@ export default function Editor(): JSX.Element {
         }}
       >
         <div>
-          <EditorWithFrame>
-            <></>
-          </EditorWithFrame>
+          <EditorNode />
+          <EditorWithFrame />
         </div>
         <FabCanvas></FabCanvas>
       </div>

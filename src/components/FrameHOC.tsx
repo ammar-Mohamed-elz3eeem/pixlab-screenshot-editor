@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import { type FC, type ComponentType, type ReactNode } from 'react'
+import { type FC } from 'react'
 import {
   FancyFrame,
   GlassDarkFrame,
@@ -9,61 +9,35 @@ import {
   WindowsDarkFrame,
   WindowsFrame,
 } from './frames'
+import { type IFrameBorder } from '../types'
 
-interface Props {
-  children: ReactNode
-}
-
-export function withFrame(WrappedComponent: ComponentType<{}>, frame: string): FC<Props> {
+export function withFrame(frame: string, style: {borderStyle: IFrameBorder} | null = null): FC {
   const WithFrame: FC = () => {
     // console.log('frame', frame)
     switch (frame) {
       case 'mac':
         // console.log('ON MAC FRAME')
         return (
-          <MacFrame>
-            <WrappedComponent />
+          <MacFrame style={style ? style.borderStyle : null}>
           </MacFrame>
         )
       case 'mac-dark':
         return (
-          <MacDarkFrame>
-            <WrappedComponent />
+          <MacDarkFrame style={style ? style.borderStyle : null}>
           </MacDarkFrame>
         )
       case 'glass':
-        return (
-          <GlassFrame>
-            <WrappedComponent />
-          </GlassFrame>
-        )
+        return <GlassFrame style={style ? style.borderStyle : null}></GlassFrame>
       case 'glass-dark':
-        return (
-          <GlassDarkFrame>
-            <WrappedComponent />
-          </GlassDarkFrame>
-        )
+        return <GlassDarkFrame style={style ? style.borderStyle : null}></GlassDarkFrame>
       case 'windows-dark':
-        return (
-          <WindowsDarkFrame>
-            <WrappedComponent />
-          </WindowsDarkFrame>
-        )
+        return <WindowsDarkFrame style={style ? style.borderStyle : null}></WindowsDarkFrame>
       case 'windows':
-        return (
-          <WindowsFrame>
-            <WrappedComponent />
-          </WindowsFrame>
-        )
+        return <WindowsFrame style={style ? style.borderStyle : null}></WindowsFrame>
       case 'fancy':
-        return (
-          <FancyFrame>
-            <WrappedComponent />
-          </FancyFrame>
-        )
+        return <FancyFrame style={style ? style.borderStyle : null}></FancyFrame>
       default:
-        // console.log('HEREEEEEEEEEEEEEEEEEE')
-        return <WrappedComponent />
+        return <></>
     }
   }
 

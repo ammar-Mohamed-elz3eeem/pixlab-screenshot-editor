@@ -1,11 +1,16 @@
 /* eslint-disable no-undef */
-import { type ReactNode } from 'react'
 
-export default function WindowsFrame({ children }: { children?: ReactNode }): JSX.Element {
+import { type IFrameBorder } from "../../types";
+
+export default function WindowsFrame({ style }: { style: IFrameBorder | null }): JSX.Element {
   return (
     <div
       key={'windows'}
-      className='relative bg-white border border-gray-400 rounded-lg overflow-hidden shadow-md'
+      style={style ?? {}}
+      className={
+        'border-frame bg-white border border-gray-400 rounded-lg overflow-hidden shadow-md' +
+        (style ? ' absolute' : ' relative')
+      }
     >
       <div className='flex items-center justify-between bg-gray-300 border-b border-gray-400 px-3 py-1'>
         <div className='text-gray-300 text-sm font-medium'></div>
@@ -61,7 +66,7 @@ export default function WindowsFrame({ children }: { children?: ReactNode }): JS
           </button>
         </div>
       </div>
-      <div className='p-4 frame-content'>{children}</div>
+      <div className='p-4 frame-content'></div>
     </div>
   )
 }

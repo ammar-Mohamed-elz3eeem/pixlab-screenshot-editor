@@ -2,7 +2,7 @@
 import { createContext, type Dispatch, type ReactNode, type SetStateAction } from 'react'
 import { useState } from 'react'
 import { frames, gradientItems, modes } from '../utils/data'
-import { type IBackground, type IColor, type IThumb } from '../types'
+import { type IFrameBorder, type IBackground, type IColor, type IThumb } from '../types'
 import { type fabric } from 'fabric'
 
 export interface AppContextDefaults {
@@ -19,6 +19,7 @@ export interface AppContextDefaults {
   shapes: fabric.Object[]
   image: string | null
   tool: 'POLYGON' | 'ERASER' | 'SELECT'
+  frameBorder: IFrameBorder | null
   setOverLay: Dispatch<SetStateAction<string | undefined>>
   setSelectedTab: Dispatch<SetStateAction<string | undefined>>
   setSelectedMode: Dispatch<SetStateAction<string>>
@@ -32,6 +33,7 @@ export interface AppContextDefaults {
   setTexts: Dispatch<SetStateAction<fabric.IText[]>>
   setImage: Dispatch<SetStateAction<string | null>>
   setTool: Dispatch<SetStateAction<'POLYGON' | 'ERASER' | 'SELECT'>>
+  setFrameBorder: Dispatch<SetStateAction<IFrameBorder | null>>
 }
 
 const defaultContextValue: AppContextDefaults = {
@@ -48,6 +50,7 @@ const defaultContextValue: AppContextDefaults = {
   shapes: [],
   image: null,
   tool: 'SELECT',
+  frameBorder: null,
   setOverLay: () => {},
   setSelectedTab: () => {},
   setSelectedMode: () => {},
@@ -61,6 +64,7 @@ const defaultContextValue: AppContextDefaults = {
   setImage: () => {},
   setShapes: () => {},
   setTool: () => {},
+  setFrameBorder: () => {},
 }
 
 export const appContext = createContext<AppContextDefaults>(defaultContextValue)
@@ -86,6 +90,7 @@ export default function AppContext({ children, value }: AppContextProps) {
   const [image, setImage] = useState<string | null>(null)
   const [overLay, setOverLay] = useState<string | undefined>(undefined)
   const [tool, setTool] = useState<'POLYGON' | 'ERASER' | 'SELECT'>('SELECT')
+  const [frameBorder, setFrameBorder] = useState<IFrameBorder | null>({left: 0, top: 0, width: 0, height: 0});
 
   return (
     <appContext.Provider
@@ -116,6 +121,8 @@ export default function AppContext({ children, value }: AppContextProps) {
         setOverLay,
         tool,
         setTool,
+        frameBorder,
+        setFrameBorder
       }}
     >
       {children}
