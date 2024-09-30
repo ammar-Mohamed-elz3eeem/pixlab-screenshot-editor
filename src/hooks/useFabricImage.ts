@@ -39,7 +39,6 @@ export default function useFabricImage(): (file: any) => void {
         originY: 'center',
       })
       fabContext?.add(frame).centerObject(frame)
-      console.log('framFbric', frame, image)
       setFabImage(image)
     })
   }

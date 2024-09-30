@@ -8,6 +8,12 @@ export interface IThumb {
   name?: string
   icon?: string
 }
+export interface IFrameBorder {
+  left: number
+  top: number
+  width: number
+  height: number
+}
 export interface IPallet {
   position: string
   firstColor: string

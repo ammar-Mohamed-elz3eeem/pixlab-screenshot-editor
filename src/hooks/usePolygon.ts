@@ -284,8 +284,6 @@ export default function usePolygon(): [boolean, Dispatch<SetStateAction<boolean>
     setPointArray((oldArr) => [...(oldArr ?? []), circle])
 
     setLineArray([...(lineArray ?? []), line])
-    console.log('pointArray', pointArray)
-    console.log('lineArray', lineArray)
 
     canvas.add(line)
     canvas.add(circle)
@@ -325,9 +323,7 @@ export default function usePolygon(): [boolean, Dispatch<SetStateAction<boolean>
     canvas.add(polygon)
   }
   function toggleDrawPolygon(canvas: fabric.Canvas): void {
-    console.log('run this', drawMode)
     if (drawMode) {
-      console.log('not draw mode')
       // stop draw mode
       setActiveLine(null)
       setActiveShape(null)
@@ -337,19 +333,15 @@ export default function usePolygon(): [boolean, Dispatch<SetStateAction<boolean>
       setDrawMode(false)
     } else {
       // start draw mode
-      console.log('draw mode')
-
       canvas.selection = false
       setDrawMode(true)
     }
   }
   function onMouseDown(options: fabric.IEvent<MouseEvent>): void {
     if (drawMode) {
-      console.log('inside draw mode here')
       if (options.target && (options.target as CustomFabricCircle).id === pointArray[0].id) {
         generatePolygon(fabContext!)
         toggleDrawPolygon(fabContext!)
-        console.log('drawMode', drawMode)
       } else {
         addPoint(this, options)
       }
@@ -385,7 +377,6 @@ export default function usePolygon(): [boolean, Dispatch<SetStateAction<boolean>
 
   useEffect(() => {
     if (fabContext) {
-      console.log('fabContext from event listeners', fabContext)
       fabContext.on('mouse:down', onMouseDown)
       fabContext.on('mouse:move', onMouseMove)
       return () => {

@@ -54,7 +54,6 @@ export const RounedImage: any = fabric.util.createClass(fabric.Image, {
 
     // top left
     ctx.moveTo(x + this.topLeft[0], y)
-    console.log('WIll MOVE TO', x + this.topLeft[0], y, this.topLeft)
 
     // line to top right
     ctx.lineTo(x + w - this.topRight[0], y)
