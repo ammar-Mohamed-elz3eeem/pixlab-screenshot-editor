@@ -73,7 +73,7 @@ function EditSingleText({
               Edit Text
             </button>
             <button
-              className='w-full rounded-md py-3 px-8 text-red-500 dark:text-gray-900 dark:bg-gray-50 text-white bg-gray-700'
+              className='w-full rounded-md py-3 px-8 dark:text-gray-900 dark:bg-gray-50 text-white bg-gray-700'
               type='button'
               onClick={() => {
                 onDelete()
