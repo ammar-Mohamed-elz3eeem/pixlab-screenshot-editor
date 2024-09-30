@@ -48,7 +48,6 @@ export default function Text(): JSX.Element {
       }
       return text
     })
-    console.log('nextTexts', nextTexts)
     setTexts(nextTexts)
     setIsEditing(false)
   }

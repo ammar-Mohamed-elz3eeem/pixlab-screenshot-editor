@@ -20,10 +20,8 @@ function FreeDraw(): JSX.Element {
   const [bruchColor, setBrushColor] = useState<string>('#000000')
 
   useEffect(() => {
-    console.log(brush)
     if (brush) {
       const patt = FabBrushes(fabContext!)[brush]
-      console.log(patt)
       fabContext!.freeDrawingBrush = patt
       if (fabContext!.freeDrawingBrush instanceof fabricClass.PatternBrush) {
         const brushDraw = fabContext!.freeDrawingBrush
@@ -74,7 +72,6 @@ function FreeDraw(): JSX.Element {
               value={brush}
               onChange={(e) => {
                 setBrush(e.target.value)
-                console.log(brush)
               }}
               className='dark:bg-gray-50 border dark:border-gray-300 dark:text-gray-900 text-sm rounded-lg dark:focus:ring-blue-500 dark:focus:border-blue-500 block w-full pl-10 p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500'
             >

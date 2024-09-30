@@ -11,7 +11,6 @@ function ImageUploadBtn(): JSX.Element {
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     acceptedFiles.forEach((file: File) => {
-      console.log(file)
       fabricImageInit(file)
       setOverLay('none')
     })

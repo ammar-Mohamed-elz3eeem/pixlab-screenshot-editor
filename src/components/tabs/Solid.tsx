@@ -22,7 +22,6 @@ export default function Solid(): JSX.Element {
     e.stopPropagation()
     e.preventDefault()
     setShowColorPicker((current) => {
-      console.log('Inside state changer')
       return !current
     })
   }
